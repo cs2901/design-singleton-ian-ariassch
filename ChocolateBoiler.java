@@ -1,10 +1,14 @@
+package com.company;
+
 public class ChocolateBoiler {
     private boolean empty;
     private boolean boiled;
+    private static ChocolateBoiler instance;
 
-    public ChocolateBoiler() {
+    private ChocolateBoiler() {
         empty = true;
         boiled = false;
+        instance = null;
     }
 
     public void fill(){
@@ -25,6 +29,20 @@ public class ChocolateBoiler {
         if(!isEmpty() && isBoiled()){
             //bring the contents to a boil
             boiled = true;
+        }
+    }
+
+    public static ChocolateBoiler getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new ChocolateBoiler();
+            System.out.println("Inicializado\n");
+            return instance;
+        }
+        else{
+        System.out.println("Llama\n");
+        return instance;
         }
     }
 
